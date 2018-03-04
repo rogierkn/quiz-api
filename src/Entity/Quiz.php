@@ -46,6 +46,14 @@ class Quiz
     private $public = false;
 
     /**
+     * Whether the quiz is open for users
+     *
+     * @var bool $open
+     * @ORM\Column(type="boolean")
+     */
+    private $open = true;
+
+    /**
      * The questions of the quiz.
      *
      * @var Question[]|Collection
@@ -157,5 +165,21 @@ class Quiz
     {
         $this->sessions->remove($session);
         $session->setQuiz(null);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isOpen(): bool
+    {
+        return $this->open;
+    }
+
+    /**
+     * @param bool $open
+     */
+    public function setOpen(bool $open): void
+    {
+        $this->open = $open;
     }
 }
