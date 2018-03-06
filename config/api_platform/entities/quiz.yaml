@@ -1,0 +1,18 @@
+App\Entity\Quiz:
+    collectionOperations:
+        get:
+            normalization_context:
+                groups: ["quiz"]
+    itemOperations:
+        get:
+            normalization_context:
+                groups: ["quiz", "questions"]
+        put: ~
+
+    properties:
+        id:
+            writeable: false
+        name: ~
+        public: ~
+        open: ~
+        questions: ~

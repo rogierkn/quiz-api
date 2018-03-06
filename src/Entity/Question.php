@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Enum\QuestionType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\QuestionRepository")
- * @ApiResource()
  */
 class Question
 {
@@ -21,8 +22,9 @@ class Question
      *
      * @var int
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
+     * @Groups({"quiz"})
      */
     private $id;
 
@@ -33,6 +35,7 @@ class Question
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
      * @Assert\Length(max="500")
+     * @Groups({"quiz"})
      */
     private $text;
 
@@ -45,14 +48,15 @@ class Question
      * @ORM\Column(type="string")
      * @Assert\Choice({"SINGLE_ANSWER"})
      * @Assert\Type("string")
+     * @Groups({"quiz"})
      */
-    private $type;
+    private $type = QuestionType::SINGLE_ANSWER;
 
     /**
      * The quiz the question belongs to.
      *
      * @var Quiz
-     * @ORM\ManyToOne(targetEntity="Quiz", inversedBy="questions")
+     * @ORM\ManyToOne(targetEntity="Quiz", inversedBy="questions", cascade={"persist"})
      */
     private $quiz;
 
@@ -61,6 +65,7 @@ class Question
      *
      * @var Answer[]|Collection
      * @ORM\OneToMany(targetEntity="Answer", mappedBy="question")
+     * @Groups({"quiz"})
      */
     private $answers;
 
@@ -68,6 +73,7 @@ class Question
      * The activities of the question
      * @var Activity[]|Collection
      * @ORM\OneToMany(targetEntity="Activity", mappedBy="question", cascade={"remove"})
+     *
      */
     private $activities;
 

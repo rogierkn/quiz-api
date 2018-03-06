@@ -1,0 +1,9 @@
+resources:
+
+    App\Entity\Answer: ~
+
+    App\Entity\Session: ~
+
+    App\Entity\Activity: ~
+
+    App\Entity\User: ~

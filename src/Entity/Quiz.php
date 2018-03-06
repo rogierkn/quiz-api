@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -12,7 +11,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\QuizRepository")
- * @ApiResource()
  */
 class Quiz
 {
@@ -21,7 +19,7 @@ class Quiz
      *
      * @var int
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -31,6 +29,7 @@ class Quiz
      *
      * @var string
      * @ORM\Column(type="string")
+     * @Assert\Length(min="3", max="100")
      * @Assert\NotBlank()
      */
     private $name;

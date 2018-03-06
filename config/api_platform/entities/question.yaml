@@ -1,0 +1,16 @@
+App\Entity\Question:
+    attributes:
+        normalization_context:
+            groups: ["question"]
+
+
+    properties:
+        id:
+            writeable: false
+            groups: ["question"]
+        text:
+            groups: ["question"]
+        public:
+            groups: ["question"]
+        open:
+            groups: ["question"]

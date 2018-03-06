@@ -1,0 +1,13 @@
+App\Entity\Quiz:
+    attributes:
+        id:
+            groups: ["quiz"]
+        name:
+            groups: ["quiz"]
+
+        public:
+            groups: ["quiz"]
+        open:
+            groups: ["quiz"]
+        questions:
+            groups: ["questions"]
