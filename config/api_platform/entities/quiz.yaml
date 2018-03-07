@@ -3,10 +3,11 @@ App\Entity\Quiz:
         get:
             normalization_context:
                 groups: ["quiz"]
+        post: ~
     itemOperations:
         get:
             normalization_context:
-                groups: ["quiz", "questions"]
+                groups: ["quiz", "questions", "answers"]
         put: ~
 
     properties:

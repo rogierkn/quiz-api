@@ -1,0 +1,9 @@
+App\Entity\Answer:
+    attributes:
+        id:
+            groups: ["answers", "answer"]
+        text:
+            groups: ["answers", "answer"]
+        correct:
+            groups: ["answers", "answer"]
+        question: # If we serialize this property we're likely to run into circular references. Also not necessary as data in front-end is denormalized anyways
