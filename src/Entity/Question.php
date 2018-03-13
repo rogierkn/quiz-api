@@ -24,7 +24,6 @@ class Question
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\Column(type="integer")
-     * @Groups({"quiz"})
      */
     private $id;
 
@@ -35,7 +34,6 @@ class Question
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
      * @Assert\Length(max="500")
-     * @Groups({"quiz"})
      */
     private $text;
 
@@ -48,7 +46,6 @@ class Question
      * @ORM\Column(type="string")
      * @Assert\Choice({"SINGLE_ANSWER"})
      * @Assert\Type("string")
-     * @Groups({"quiz"})
      */
     private $type = QuestionType::SINGLE_ANSWER;
 
@@ -56,7 +53,7 @@ class Question
      * The quiz the question belongs to.
      *
      * @var Quiz
-     * @ORM\ManyToOne(targetEntity="Quiz", inversedBy="questions", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Quiz", inversedBy="questions")
      */
     private $quiz;
 
@@ -64,8 +61,7 @@ class Question
      * The answers of the question.
      *
      * @var Answer[]|Collection
-     * @ORM\OneToMany(targetEntity="Answer", mappedBy="question")
-     * @Groups({"quiz"})
+     * @ORM\OneToMany(targetEntity="Answer", mappedBy="question", cascade={"all"})
      */
     private $answers;
 
@@ -134,7 +130,7 @@ class Question
     /**
      * @param Quiz $quiz
      */
-    public function setQuiz(Quiz $quiz): void
+    public function setQuiz(?Quiz $quiz): void
     {
         $this->quiz = $quiz;
     }

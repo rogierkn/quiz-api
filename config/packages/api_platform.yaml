@@ -2,7 +2,7 @@ api_platform:
     title: Quiz API
     version: 0.1-alpha
 
-    allow_plain_identifiers: true # So we can use normal json objects with id instead of ld+json, no need for complexer json structure in this app
+#    allow_plain_identifiers: true # So we can use normal json objects with id instead of ld+json, no need for complexer json structure in this app
 
     resource_class_directories: # Where api-platform can find the entities that are resources
         - '%kernel.project_dir%/config/api_platform/entities/'
@@ -18,6 +18,8 @@ api_platform:
 #        public: true
 
     formats:
+        jsonld:
+            mime_types: ['application/ld+json']
         json:
             mime_types: ['application/json']
         html:

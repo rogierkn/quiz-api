@@ -1,0 +1,10 @@
+App\Entity\Answer:
+    collectionOperations:
+        get: ~
+        post:
+            normalization_context:
+                groups: ["answer.post"]
+
+    itemOperations:
+        get: ~
+        delete: ~

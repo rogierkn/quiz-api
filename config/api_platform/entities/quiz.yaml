@@ -1,19 +1,27 @@
 App\Entity\Quiz:
+    attributes:
+        normalization_context:
+            enable_max_depth: true
+        denormalization_context:
+            enable_max_depth: true
+
     collectionOperations:
         get:
             normalization_context:
-                groups: ["quiz"]
+                enable_max_depth: true
+                groups: ["quizzes.get"]
         post: ~
     itemOperations:
         get:
             normalization_context:
-                groups: ["quiz", "questions", "answers"]
-        put: ~
+                enable_max_depth: true
+                groups: ["quiz.get"]
+        put:
+            normalization_context:
+                enable_max_depth: true
+                groups: ["quiz.get"]
+            denormalization_context:
+                enable_max_depth: true
+                groups: ["quiz.put"]
 
-    properties:
-        id:
-            writeable: false
-        name: ~
-        public: ~
-        open: ~
-        questions: ~
+        delete: ~

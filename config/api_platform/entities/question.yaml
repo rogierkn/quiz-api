@@ -1,16 +1,7 @@
 App\Entity\Question:
-    attributes:
-        normalization_context:
-            groups: ["question"]
+    collectionOperations:
+        get: ~
+        post:
+            normalization_context:
+                groups: ["question.post"]
 
-
-    properties:
-        id:
-            writeable: false
-            groups: ["question"]
-        text:
-            groups: ["question"]
-        public:
-            groups: ["question"]
-        open:
-            groups: ["question"]

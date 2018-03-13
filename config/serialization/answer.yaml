@@ -1,9 +1,11 @@
 App\Entity\Answer:
     attributes:
         id:
-            groups: ["answers", "answer"]
+            groups: ["quiz.put", "quiz.get", "answer.post"]
         text:
-            groups: ["answers", "answer"]
+            groups: ["quiz.put", "quiz.get", "answer.post"]
         correct:
-            groups: ["answers", "answer"]
-        question: # If we serialize this property we're likely to run into circular references. Also not necessary as data in front-end is denormalized anyways
+            groups: ["quiz.put", "quiz.get", "answer.post"]
+        question:
+            max_depth: 0
+            groups: ["quiz.put", "quiz.get", "answer.post"]

@@ -136,7 +136,7 @@ class Quiz
      */
     public function removeQuestion(Question $question): void
     {
-        $this->questions->remove($question);
+        $this->questions->removeElement($question);
         $question->setQuiz(null);
     }
 
