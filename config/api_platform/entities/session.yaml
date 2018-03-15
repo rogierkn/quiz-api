@@ -1,0 +1,12 @@
+App\Entity\Session:
+    collectionOperations:
+        get: ~
+        post:
+            denormalization_context:
+                groups: ["session.post"]
+
+    itemOperations:
+        get:
+            normalization_context:
+                groups: ["session.get"]
+

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Enum\SessionStatus;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,6 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SessionRepository")
+ * @ApiResource()
  */
 class Session
 {
@@ -45,16 +47,34 @@ class Session
     private $uuid;
 
     /**
-     * The activities of the session
+     * The activities of the session.
+     *
      * @var Activity[]|Collection
      * @ORM\OneToMany(targetEntity="Activity", mappedBy="session", cascade={"remove"})
      */
     private $activities;
 
+    /**
+     * The status of the session.
+     *
+     * @var string
+     * @ORM\Column(type="string")
+     * @\App\Validator\Constraints\SessionStatus()
+     */
+    private $status;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
     public function __construct()
     {
         $this->uuid = Uuid::uuid4();
         $this->activities = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+        $this->status = SessionStatus::OPEN;
     }
 
     /**
@@ -113,5 +133,29 @@ class Session
     {
         $this->activities->remove($activity);
         $activity->setSession(null);
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
     }
 }

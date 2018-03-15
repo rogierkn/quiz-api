@@ -21,6 +21,7 @@ framework:
         log: true
 
     cache:
+
         # The app cache caches to the filesystem by default. Other options include:
 
         # Redis

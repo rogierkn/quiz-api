@@ -1,14 +1,17 @@
 App\Entity\Quiz:
     attributes:
         id:
-            groups: ["quizzes.get", "quiz.get", "quiz.put"]
+            groups: ["quizzes.get", "quiz.get", "quiz.put", "session.get"]
         name:
-            groups: ["quizzes.get", "quiz.get", "quiz.put"]
+            groups: ["quizzes.get", "quiz.get", "quiz.put", "session.get"]
 
         public:
-            groups: ["quizzes.get", "quiz.get", "quiz.put"]
+            groups: ["quizzes.get", "quiz.get", "quiz.put", "session.get"]
         open:
-            groups: ["quizzes.get", "quiz.get", "quiz.put"]
+            groups: ["quizzes.get", "quiz.get", "quiz.put", "session.get"]
         questions:
             max_depth: 1
-            groups: ["quizzes.get", "quiz.get", "quiz.put"]
+            groups: ["quizzes.get", "quiz.get", "quiz.put", "session.get"]
+        sessions:
+            max_depth: 1
+            groups: ["quizzes.get"]

@@ -25,6 +25,11 @@ services:
         tags: ['controller.service_arguments']
 
 
+    quiz.session.topic:
+        class: App\Topic\QuizSessionTopic
+        tags:
+            - { name: gos_web_socket.topic }
+
 #    App\Serializer\JsonItemNormalizer:
 #        arguments: [ '@api_platform.serializer.normalizer.item' ]
 
