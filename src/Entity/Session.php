@@ -31,7 +31,7 @@ class Session
     /**
      * The quiz the session belongs to.
      *
-     * @var Quiz
+     * @var Quiz|null
      * @ORM\ManyToOne(targetEntity="Quiz", inversedBy="sessions")
      */
     private $quiz;
@@ -71,7 +71,7 @@ class Session
 
     public function __construct()
     {
-        $this->uuid = Uuid::uuid4();
+        $this->uuid = Uuid::uuid4()->toString();
         $this->activities = new ArrayCollection();
         $this->createdAt = new \DateTime();
         $this->status = SessionStatus::OPEN;
@@ -86,17 +86,17 @@ class Session
     }
 
     /**
-     * @return Quiz
+     * @return Quiz|null
      */
-    public function getQuiz(): Quiz
+    public function getQuiz(): ?Quiz
     {
         return $this->quiz;
     }
 
     /**
-     * @param Quiz $quiz
+     * @param Quiz|null $quiz
      */
-    public function setQuiz(Quiz $quiz): void
+    public function setQuiz(?Quiz $quiz): void
     {
         $this->quiz = $quiz;
     }
@@ -110,7 +110,7 @@ class Session
     }
 
     /**
-     * @return Activity[]|ArrayCollection
+     * @return Activity[]|Collection
      */
     public function getActivities(): Collection
     {
@@ -131,7 +131,7 @@ class Session
      */
     public function removeActivity(Activity $activity)
     {
-        $this->activities->remove($activity);
+        $this->activities->removeElement($activity);
         $activity->setSession(null);
     }
 

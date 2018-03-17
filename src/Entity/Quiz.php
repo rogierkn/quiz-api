@@ -162,7 +162,7 @@ class Quiz
      */
     public function removeSession(Session $session): void
     {
-        $this->sessions->remove($session);
+        $this->sessions->removeElement($session);
         $session->setQuiz(null);
     }
 

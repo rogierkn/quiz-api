@@ -21,7 +21,7 @@ class ActivityEventValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint): void
     {
-        if (!defined(\App\Enum\ActivityEvent::class.'::'.$value)) {
+        if (!defined(\App\Enum\ActivityEvent::class.'::'.$value) && $constraint instanceof ActivityEvent) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ event }}', $value)
                 ->addViolation();

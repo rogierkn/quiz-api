@@ -70,7 +70,7 @@ class User
     }
 
     /**
-     * @return Activity[]|ArrayCollection
+     * @return Activity[]|Collection
      */
     public function getActivities(): Collection
     {
@@ -91,7 +91,7 @@ class User
      */
     public function removeActivity(Activity $activity)
     {
-        $this->activities->remove($activity);
+        $this->activities->removeElement($activity);
         $activity->setUser(null);
     }
 

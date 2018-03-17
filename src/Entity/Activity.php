@@ -27,20 +27,20 @@ class Activity
     private $id;
 
     /**
-     * @var Session
+     * @var Session|null $session
      * @ORM\ManyToOne(targetEntity="Session", inversedBy="activities")
      */
     private $session;
 
     /**
-     * @var Question
+     * @var Question|null
      * @ORM\ManyToOne(targetEntity="Question", inversedBy="activities")
      * @ORM\JoinColumn(name="question_id", nullable=true)
      */
     private $question;
 
     /**
-     * @var User
+     * @var User|null
      * @ORM\ManyToOne(targetEntity="User", inversedBy="activities")
      */
     private $user;
@@ -53,7 +53,7 @@ class Activity
     private $event;
 
     /**
-     * @var Answer
+     * @var Answer|null
      * @ORM\ManyToOne(targetEntity="Answer", inversedBy="activities")
      * @ORM\JoinColumn("answer_id", nullable=true)
      */
@@ -91,13 +91,13 @@ class Activity
     public function setCorrect()
     {
         if (Event::QUESTION_ANSWER === $this->event) {
-            if ($this->getAnswer()->isCorrect()) {
+            if ($this->getAnswer() !== null && $this->getAnswer()->isCorrect()) {
                 $this->correct = true;
             } else {
                 $this->correct = false;
             }
         } else {
-            $this->correct = null;
+            $this->correct = false; // If undeterminable set it to false
         }
     }
 
@@ -110,17 +110,17 @@ class Activity
     }
 
     /**
-     * @return Session
+     * @return Session|null
      */
-    public function getSession(): Session
+    public function getSession(): ?Session
     {
         return $this->session;
     }
 
     /**
-     * @param Session $session
+     * @param Session|null $session
      */
-    public function setSession(Session $session): void
+    public function setSession(?Session $session): void
     {
         $this->session = $session;
     }
@@ -128,15 +128,15 @@ class Activity
     /**
      * @return Question
      */
-    public function getQuestion(): Question
+    public function getQuestion(): ?Question
     {
         return $this->question;
     }
 
     /**
-     * @param Question $question
+     * @param Question|null $question
      */
-    public function setQuestion(Question $question): void
+    public function setQuestion(?Question $question): void
     {
         $this->question = $question;
     }
@@ -144,15 +144,15 @@ class Activity
     /**
      * @return User
      */
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
     /**
-     * @param User $user
+     * @param User|null $user
      */
-    public function setUser(User $user): void
+    public function setUser(?User $user): void
     {
         $this->user = $user;
     }
@@ -174,17 +174,17 @@ class Activity
     }
 
     /**
-     * @return Answer
+     * @return Answer|null
      */
-    public function getAnswer(): Answer
+    public function getAnswer(): ?Answer
     {
         return $this->answer;
     }
 
     /**
-     * @param Answer $answer
+     * @param Answer|null $answer
      */
-    public function setAnswer(Answer $answer): void
+    public function setAnswer(?Answer $answer): void
     {
         $this->answer = $answer;
     }

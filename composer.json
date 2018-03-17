@@ -19,6 +19,7 @@
     },
     "require-dev": {
         "api-platform/schema-generator": "^2.1",
+        "phpstan/phpstan": "^0.9.2",
         "symfony/maker-bundle": "^1.1",
         "symfony/phpunit-bridge": "^4.0"
     },

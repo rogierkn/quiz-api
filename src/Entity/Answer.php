@@ -37,7 +37,7 @@ class Answer
     /**
      * The question the answer belongs to.
      *
-     * @var Question
+     * @var Question|null
      * @ORM\ManyToOne(targetEntity="Question", inversedBy="answers")
      */
     private $question;
@@ -88,17 +88,17 @@ class Answer
     }
 
     /**
-     * @return Question
+     * @return Question|null
      */
-    public function getQuestion(): Question
+    public function getQuestion(): ?Question
     {
         return $this->question;
     }
 
     /**
-     * @param Question $question
+     * @param Question|null $question
      */
-    public function setQuestion(Question $question): void
+    public function setQuestion(?Question $question): void
     {
         $this->question = $question;
     }
@@ -125,7 +125,7 @@ class Answer
      */
     public function removeActivity(Activity $activity): void
     {
-        $this->activities->remove($activity);
+        $this->activities->removeElement($activity);
         $activity->setAnswer(null);
     }
 

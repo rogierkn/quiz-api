@@ -52,7 +52,7 @@ class Question
     /**
      * The quiz the question belongs to.
      *
-     * @var Quiz
+     * @var Quiz|null
      * @ORM\ManyToOne(targetEntity="Quiz", inversedBy="questions")
      */
     private $quiz;
@@ -120,15 +120,15 @@ class Question
     }
 
     /**
-     * @return Quiz
+     * @return Quiz|null
      */
-    public function getQuiz(): Quiz
+    public function getQuiz(): ?Quiz
     {
         return $this->quiz;
     }
 
     /**
-     * @param Quiz $quiz
+     * @param Quiz|null $quiz
      */
     public function setQuiz(?Quiz $quiz): void
     {
@@ -157,12 +157,12 @@ class Question
      */
     public function removeAnswer(Answer $answer)
     {
-        $this->answers->remove($answer);
+        $this->answers->removeElement($answer);
         $answer->setQuestion(null);
     }
 
     /**
-     * @return Activity[]|ArrayCollection
+     * @return Activity[]|Collection
      */
     public function getActivities(): Collection
     {
@@ -183,7 +183,7 @@ class Question
      */
     public function removeActivity(Activity $activity)
     {
-        $this->activities->remove($activity);
+        $this->activities->removeElement($activity);
         $activity->setQuestion(null);
     }
 }
