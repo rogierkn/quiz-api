@@ -24,3 +24,9 @@ api_platform:
             mime_types: ['application/json']
         html:
             mime_types: ['text/html']
+
+    swagger:
+        api_keys:
+            apiKey:
+                name: Authorization
+                type: header

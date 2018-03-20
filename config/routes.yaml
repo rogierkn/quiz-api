@@ -1,3 +1,14 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+api_login_check:
+    path: /api/auth/login_check
+
+#api_register:
+#    path: /api/auth/register
+#    methods: [POST]
+#    controller: App\Controller\Auth\RegisterController
+
+swagger_ui:
+    path: /docs
+    controller: api_platform.swagger.action.ui

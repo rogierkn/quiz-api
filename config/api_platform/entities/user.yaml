@@ -1,0 +1,14 @@
+App\Entity\User:
+    collectionOperations:
+        get: ~
+        register:
+            path: '/auth/register.{_format}'
+            controller: 'App\Controller\Auth\Register'
+            method: 'POST'
+
+    properties:
+        id: ~
+        email: ~
+        password:
+            readable: false
+            writeable: true
