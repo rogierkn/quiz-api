@@ -1,0 +1,11 @@
+App\Entity\Activity:
+    collectionOperations:
+        get: ~
+        post:
+            normalization_context:
+                groups: ["activity.post"]
+            denormalization_context:
+                groups: ["activity.post"]
+
+    itemOperations:
+        get: ~

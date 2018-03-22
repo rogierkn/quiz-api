@@ -9,4 +9,9 @@ App\Entity\Session:
         get:
             normalization_context:
                 groups: ["session.get"]
+        put:
+            normalization_context:
+                groups: ["session.put"]
+            denormalization_context:
+                groups: ["session.put"] # Only happens whenever the Hosting party modifies the Quiz's session
 

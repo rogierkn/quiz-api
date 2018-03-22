@@ -1,0 +1,12 @@
+App\Entity\Activity:
+    attributes:
+        id: ~
+        session:
+            groups: ["activity.post"]
+        question:
+            groups: ["activity.post"]
+        user:
+            groups: ["activity.post"]
+        answer:
+            groups: ["activity.post"]
+

@@ -8,3 +8,8 @@ App\Entity\Answer:
     itemOperations:
         get: ~
         delete: ~
+        put:
+            normalization_context:
+                groups: ["answer.get"]
+            denormalization_context:
+                groups: ["answer.put"]

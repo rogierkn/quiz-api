@@ -4,4 +4,13 @@ App\Entity\Question:
         post:
             normalization_context:
                 groups: ["question.post"]
+    itemOperations:
+        get: ~
+        put:
+            normalization_context:
+                groups: ["question.get"]
+            denormalization_context:
+                groups: ["question.put"]
+
+        delete: ~
 

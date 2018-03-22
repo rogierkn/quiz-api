@@ -5,11 +5,11 @@ App\Entity\Session:
         uuid:
             groups: ["session.get", "quizzes.get"]
         status:
-            groups: ["session.get", "quizzes.get"]
+            groups: ["session.get", "quizzes.get", "session.put"]
         createdAt:
             groups: ["session.get", "quizzes.get"]
         activities:
-            groups: ["session.get", "quizzes.get"]
+            groups: ["quizzes.get"]
         quiz:
             max_depth: 1
             groups: ["session.get", "session.post", "quizzes.get"]

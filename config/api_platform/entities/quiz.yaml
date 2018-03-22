@@ -19,7 +19,7 @@ App\Entity\Quiz:
         put:
             normalization_context:
                 enable_max_depth: true
-                groups: ["quiz.get"]
+                groups: ["quiz.put"]
             denormalization_context:
                 enable_max_depth: true
                 groups: ["quiz.put"]
