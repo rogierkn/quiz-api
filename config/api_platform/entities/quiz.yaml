@@ -25,3 +25,9 @@ App\Entity\Quiz:
                 groups: ["quiz.put"]
 
         delete: ~
+
+    properties:
+        sessions:
+            subresource:
+                resourceClass: 'App\Entity\Session'
+                collection: true

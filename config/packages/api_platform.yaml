@@ -7,6 +7,10 @@ api_platform:
     resource_class_directories: # Where api-platform can find the entities that are resources
         - '%kernel.project_dir%/config/api_platform/entities/'
 
+
+    collection:
+        pagination:
+            enabled: false
     # Enable the Varnish integration
 #    http_cache:
 #        invalidation:

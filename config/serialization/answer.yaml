@@ -8,4 +8,4 @@ App\Entity\Answer:
             groups: ["quiz.put", "quiz.get", "answer.post", "answer.put", "session.get"]
         question:
             max_depth: 0
-            groups: ["quiz.put", "quiz.get", "answer.post"]
+            groups: ["quiz.put", "quiz.get", "answer.post", "session.get"]

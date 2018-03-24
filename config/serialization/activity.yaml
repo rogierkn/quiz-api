@@ -1,12 +1,19 @@
 App\Entity\Activity:
     attributes:
-        id: ~
+        id:
+            groups: ["quiz.sessions.get", "session.get"]
         session:
-            groups: ["activity.post"]
+            groups: ["activity.post", "quiz.sessions.get", "session.get"]
         question:
-            groups: ["activity.post"]
+            groups: ["activity.post", "quiz.sessions.get", "session.get"]
         user:
-            groups: ["activity.post"]
+            groups: ["activity.post", "quiz.sessions.get", "session.get"]
         answer:
-            groups: ["activity.post"]
+            groups: ["activity.post", "quiz.sessions.get", "session.get"]
+        event:
+            groups: ["quiz.sessions.get", "session.get"]
+        correct:
+            groups: ["quiz.sessions.get", "session.get"]
+        created_at:
+            groups: ["quiz.sessions.get", "session.get"]
 

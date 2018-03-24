@@ -1,15 +1,16 @@
 App\Entity\Session:
     attributes:
         id:
-            groups: ["session.get", "quizzes.get"]
+            groups: ["session.get", "quizzes.get", "quiz.sessions.get"]
         uuid:
-            groups: ["session.get", "quizzes.get"]
+            groups: ["session.get", "quizzes.get", "quiz.sessions.get"]
         status:
-            groups: ["session.get", "quizzes.get", "session.put"]
+            groups: ["session.get", "quizzes.get", "session.put", "quiz.sessions.get"]
         createdAt:
-            groups: ["session.get", "quizzes.get"]
+            groups: ["session.get", "quizzes.get", "quiz.sessions.get"]
         activities:
-            groups: ["quizzes.get"]
+            max_depth: 1
+            groups: ["session.get", "quiz.sessions.get"]
         quiz:
             max_depth: 1
             groups: ["session.get", "session.post", "quizzes.get"]

@@ -4,10 +4,16 @@ App\Entity\Session:
         post:
             denormalization_context:
                 groups: ["session.post"]
+        api_quizzes_sessions_get_subresource:
+            method: 'GET'
+            normalization_context:
+                enable_max_depth: true
+                groups: ["quiz.sessions.get"]
 
     itemOperations:
         get:
             normalization_context:
+                enable_max_depth: true
                 groups: ["session.get"]
         put:
             normalization_context:
