@@ -5,22 +5,29 @@ declare(strict_types=1);
 namespace App\Tests\unit\Validator\Constraints;
 
 
+use App\Enum\SessionStatus;
 use App\Validator\Constraints\ActivityEvent;
 use App\Validator\Constraints\ActivityEventValidator;
 use App\Enum\ActivityEvent as Event;
+use App\Validator\Constraints\SessionStatus as SessionStatusConstraint;
+use App\Validator\Constraints\SessionStatusValidator;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Context\ExecutionContext;
 use Symfony\Component\Validator\Violation\ConstraintViolationBuilder;
 
 
-class ActivityEventValidatorTest extends TestCase
+/**
+ * Class ActivityEventValidatorTest
+ * @package App\Tests\unit\Validator\Constraints
+ */
+class SessionStatusValidatorTest extends TestCase
 {
 
     /**
      * @param null|string $expectedMessage
-     * @return ActivityEventValidator
+     * @return SessionStatusValidator
      */
-    private function configureValidator(?string $expectedMessage): ActivityEventValidator
+    private function configureValidator(?string $expectedMessage): SessionStatusValidator
     {
         // mock the violation builder
         $builder = $this->getMockBuilder(ConstraintViolationBuilder::class)
@@ -54,7 +61,7 @@ class ActivityEventValidatorTest extends TestCase
         }
 
         // initialize the validator with the mocked context
-        $validator = new ActivityEventValidator();
+        $validator = new SessionStatusValidator();
         $validator->initialize($context);
 
         // return the SomeConstraintValidator
@@ -65,14 +72,12 @@ class ActivityEventValidatorTest extends TestCase
     public function testValid(): void
     {
         $validator = $this->configureValidator(null);
-
-        $validator->validate(Event::QUESTION_ANSWER, new ActivityEvent);
-
+        $validator->validate(SessionStatus::CLOSED, new SessionStatusConstraint);
     }
 
     public function testInvalid(): void
     {
-        $validator = $this->configureValidator((new ActivityEvent)->message);
-        $validator->validate('Invalid event', new ActivityEvent);
+        $validator = $this->configureValidator((new SessionStatusConstraint)->message);
+        $validator->validate("Invalid event", new SessionStatusConstraint);
     }
 }

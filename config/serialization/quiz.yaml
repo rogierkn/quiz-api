@@ -4,11 +4,6 @@ App\Entity\Quiz:
             groups: ["quizzes.get", "quiz.get", "session.get"]
         name:
             groups: ["quizzes.get", "quiz.get", "quiz.put", "session.get"]
-
-        public:
-            groups: ["quizzes.get", "quiz.get", "quiz.put", "session.get"]
-        open:
-            groups: ["quizzes.get", "quiz.get", "quiz.put", "session.get"]
         questions:
             max_depth: 1
             groups: ["quizzes.get", "quiz.get", "session.get"]

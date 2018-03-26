@@ -7,24 +7,27 @@ App\Entity\Quiz:
 
     collectionOperations:
         get:
+            access_control: "has_role('ROLE_ADMIN')"
             normalization_context:
                 enable_max_depth: true
                 groups: ["quizzes.get"]
         post: ~
     itemOperations:
         get:
+            access_control: "user.hasAccessToQuiz(object) or has_role('ROLE_ADMIN')"
             normalization_context:
                 enable_max_depth: true
                 groups: ["quiz.get"]
         put:
+            access_control: "user.hasAccessToQuiz(object) or has_role('ROLE_ADMIN')"
             normalization_context:
                 enable_max_depth: true
                 groups: ["quiz.put"]
             denormalization_context:
                 enable_max_depth: true
                 groups: ["quiz.put"]
-
-        delete: ~
+        delete:
+            access_control: "user.hasAccessToQuiz(object) or has_role('ROLE_ADMIN')"
 
     properties:
         sessions:

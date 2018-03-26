@@ -1,6 +1,5 @@
 App\Entity\Activity:
     collectionOperations:
-        get: ~
         post:
             normalization_context:
                 groups: ["activity.post"]
@@ -8,4 +7,5 @@ App\Entity\Activity:
                 groups: ["activity.post"]
 
     itemOperations:
-        get: ~
+        get:
+            access_control: "user.hasAccessToQuiz(object.getSession().getQuiz()) or has_role('ROLE_ADMIN')"

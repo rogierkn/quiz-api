@@ -69,6 +69,13 @@ class Session
      */
     private $createdAt;
 
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     * @\App\Validator\Constraints\SessionType()
+     */
+    private $type;
+
     public function __construct()
     {
         $this->uuid = Uuid::uuid4()->toString();
@@ -157,5 +164,21 @@ class Session
     public function setStatus(string $status): void
     {
         $this->status = $status;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType(string $type): void
+    {
+        $this->type = $type;
     }
 }

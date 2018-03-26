@@ -1,6 +1,7 @@
 App\Entity\Question:
     collectionOperations:
-        get: ~
+        get:
+            access_control: "has_role('ROLE_ADMIN')"
         post:
             normalization_context:
                 groups: ["question.post"]

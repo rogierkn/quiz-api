@@ -13,6 +13,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ActivityRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @ORM\Table(name="activity", uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="activity_unique_per_session_user_question", columns={"user_id", "session_id", "question_id"})
+ *     })
+ *
  */
 class Activity
 {
@@ -29,6 +33,7 @@ class Activity
     /**
      * @var Session|null $session
      * @ORM\ManyToOne(targetEntity="Session", inversedBy="activities")
+     * @Assert\Expression(expression="value.getStatus() != 'FINISHED'", message="You cannot participate in a session that has been finished")
      */
     private $session;
 

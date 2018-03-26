@@ -1,7 +1,12 @@
 App\Entity\Session:
     collectionOperations:
-        get: ~
+        get:
+            access_control: "has_role('ROLE_ADMIN')"
+            normalization_context:
+                enable_max_depth: true
+                groups: ["quiz.sessions.get"]
         post:
+            access_control: "user.hasAccessToQuiz(object.getQuiz())"
             denormalization_context:
                 groups: ["session.post"]
         api_quizzes_sessions_get_subresource:

@@ -1,6 +1,7 @@
 App\Entity\User:
     collectionOperations:
-        get: ~
+        get:
+            access_control: 'has_role("ROLE_ADMIN")'
         register:
             path: '/auth/register.{_format}'
             controller: 'App\Controller\Auth\Register'
@@ -12,3 +13,7 @@ App\Entity\User:
         password:
             readable: false
             writeable: true
+        quizzes:
+             subresource:
+                resourceClass: 'App\Entity\Quiz'
+                collection: true

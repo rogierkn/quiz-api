@@ -1,14 +1,17 @@
 App\Entity\Answer:
     collectionOperations:
-        get: ~
         post:
+            access_control: "user.hasAccessToQuiz(object.getQuestion().getQuiz())"
             normalization_context:
                 groups: ["answer.post"]
 
     itemOperations:
-        get: ~
-        delete: ~
+        get:
+            access_control: "user.hasAccessToQuiz(object.getQuestion().getQuiz())"
+        delete:
+            access_control: "user.hasAccessToQuiz(object.getQuestion().getQuiz())"
         put:
+            access_control: "user.hasAccessToQuiz(object.getQuestion().getQuiz())"
             normalization_context:
                 groups: ["answer.get"]
             denormalization_context:

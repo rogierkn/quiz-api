@@ -8,21 +8,21 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
- * Validates whether a session status is valid
+ * Validates whether a session type is valid
  */
-class SessionStatusValidator extends ConstraintValidator
+class SessionTypeValidator extends ConstraintValidator
 {
     /**
      * Checks if the passed value is valid.
      *
      * @param string                   $value      The value that should be validated
-     * @param SessionStatus|Constraint $constraint The ActivityEvent constraint for the validation
+     * @param SessionType|Constraint $constraint The ActivityEvent constraint for the validation
      */
     public function validate($value, Constraint $constraint): void
     {
-        if (!\defined(\App\Enum\SessionStatus::class.'::'.$value) && $constraint instanceof SessionStatus) {
+        if (!\defined(\App\Enum\SessionType::class.'::'.$value) && $constraint instanceof SessionType) {
             $this->context->buildViolation($constraint->message)
-                ->setParameter('{{ status }}', $value)
+                ->setParameter('{{ type }}', $value)
                 ->addViolation();
         }
     }

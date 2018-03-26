@@ -51,9 +51,26 @@ class User implements UserInterface, Serializable
      */
     private $activities;
 
+    /**
+     * @var Quiz[]|Collection
+     * @ORM\ManyToMany(targetEntity="Quiz")
+     * @ORM\JoinTable(name="users_quizzes",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="quiz_id", referencedColumnName="id", onDelete="CASCADE")}
+     * )
+     */
+    private $quizzes;
+
+    /**
+     * @var string[]
+     * @ORM\Column(type="simple_array")
+     */
+    private $roles = ['ROLE_USER'];
+
     public function __construct()
     {
         $this->activities = new ArrayCollection();
+        $this->quizzes = new ArrayCollection();
     }
 
     public function getEmail(): string
@@ -107,7 +124,7 @@ class User implements UserInterface, Serializable
 
     public function getRoles(): array
     {
-        return ['ROLE_USER'];
+        return $this->roles;
     }
 
     public function getPassword(): string
@@ -132,5 +149,28 @@ class User implements UserInterface, Serializable
     public function setPassword(string $password): void
     {
         $this->password = $password;
+    }
+
+    /**
+     * @return Quiz[]|Collection
+     */
+    public function getQuizzes(): Collection
+    {
+        return $this->quizzes;
+    }
+
+    public function addQuiz(Quiz $quiz): void
+    {
+        $this->quizzes->add($quiz);
+    }
+
+    public function removeQuiz(Quiz $quiz): void
+    {
+        $this->quizzes->removeElement($quiz);
+    }
+
+    public function hasAccessToQuiz(Quiz $quiz)
+    {
+        return $this->getQuizzes()->contains($quiz);
     }
 }

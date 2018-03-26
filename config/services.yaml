@@ -24,6 +24,15 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    App\EventSubscriber\JwtListener:
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: addIdToJwt }
+
+    App\EventSubscriber\QuizUserCoupler:
+        tags:
+            - { name: doctrine.event_listener, event: postPersist, lazy: true}
+
+
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

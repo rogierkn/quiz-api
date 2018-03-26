@@ -35,24 +35,6 @@ class Quiz
     private $name;
 
     /**
-     * Whether the quiz is publicly available or not.
-     *
-     * @var bool
-     * @ORM\Column(type="boolean")
-     * @Assert\NotNull()
-     * @Assert\Type("bool")
-     */
-    private $public = false;
-
-    /**
-     * Whether the quiz is open for users
-     *
-     * @var bool $open
-     * @ORM\Column(type="boolean")
-     */
-    private $open = true;
-
-    /**
      * The questions of the quiz.
      *
      * @var Question[]|Collection
@@ -96,22 +78,6 @@ class Quiz
     public function setName(string $name): void
     {
         $this->name = $name;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isPublic(): bool
-    {
-        return $this->public;
-    }
-
-    /**
-     * @param bool $public
-     */
-    public function setPublic(bool $public): void
-    {
-        $this->public = $public;
     }
 
     /**
@@ -164,21 +130,5 @@ class Quiz
     {
         $this->sessions->removeElement($session);
         $session->setQuiz(null);
-    }
-
-    /**
-     * @return bool
-     */
-    public function isOpen(): bool
-    {
-        return $this->open;
-    }
-
-    /**
-     * @param bool $open
-     */
-    public function setOpen(bool $open): void
-    {
-        $this->open = $open;
     }
 }

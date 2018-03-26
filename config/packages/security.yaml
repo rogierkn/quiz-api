@@ -38,5 +38,7 @@ security:
             security: false
 
     access_control:
+        #Entity ACL
+
         - { path: ^/api/auth, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: [ROLE_USER] }
