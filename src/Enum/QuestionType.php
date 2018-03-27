@@ -11,6 +11,6 @@ namespace App\Enum;
  */
 class QuestionType
 {
-    const SINGLE_ANSWER = "SINGLE_ANSWER";
+    public const SINGLE_ANSWER = 'SINGLE_ANSWER';
 
 }

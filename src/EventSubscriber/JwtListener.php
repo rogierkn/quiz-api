@@ -23,7 +23,7 @@ class JwtListener
             throw new RuntimeException('Expected user of class ' . User::class . ', received ' . \get_class($user));
         }
         $payload = $event->getData();
-        $payload['id'] = $user->getId();
+        $payload['id'] = $user->getId(); // We add the id to the token payload so we can use it to request the user's own resources (quizzes etc.)
         $event->setData($payload);
     }
 }

@@ -8,5 +8,5 @@ App\Entity\Quiz:
             max_depth: 1
             groups: ["quizzes.get", "quiz.get", "session.get"]
         sessions:
-            max_depth: 1
+            max_depth: 3
             groups: ["quizzes.get"]

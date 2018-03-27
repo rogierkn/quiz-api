@@ -12,6 +12,12 @@ App\Entity\Quiz:
                 enable_max_depth: true
                 groups: ["quizzes.get"]
         post: ~
+        api_users_quizzes_get_subresource: # Get the quizzes of a user
+            method: 'GET'
+            access_control: "user == object"
+            normalization_context:
+                enable_max_depth: true
+                groups: ["quizzes.get"]
     itemOperations:
         get:
             access_control: "user.hasAccessToQuiz(object) or has_role('ROLE_ADMIN')"
