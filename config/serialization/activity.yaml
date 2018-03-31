@@ -9,7 +9,9 @@ App\Entity\Activity:
         user:
             groups: ["activity.post", "quiz.sessions.get", "session.get"]
         answer:
-            groups: ["activity.post", "quiz.sessions.get", "session.get"]
+            groups: ["activity.post", "session.get"]
+        secondsForDecision:
+            groups: ["activity.post", "session.get"]
         event:
             groups: ["quiz.sessions.get", "session.get"]
         correct:

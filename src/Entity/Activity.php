@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use App\Enum\ActivityEvent as Event;
 use App\Validator\Constraints\ActivityEvent;
 use Doctrine\ORM\Mapping as ORM;
@@ -63,6 +62,12 @@ class Activity
      * @ORM\JoinColumn("answer_id", nullable=true)
      */
     private $answer;
+
+    /**
+     * @var double|null
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $secondsForDecision;
 
     /**
      * @var bool
@@ -201,4 +206,21 @@ class Activity
     {
         return $this->correct;
     }
+
+    /**
+     * @return float|null
+     */
+    public function getSecondsForDecision(): ?float
+    {
+        return $this->secondsForDecision;
+    }
+
+    /**
+     * @param float|null $secondsForDecision
+     */
+    public function setSecondsForDecision(?float $secondsForDecision): void
+    {
+        $this->secondsForDecision = $secondsForDecision;
+    }
+
 }
