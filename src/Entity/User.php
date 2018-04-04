@@ -65,7 +65,7 @@ class User implements UserInterface, Serializable
      * @var string[]
      * @ORM\Column(type="simple_array")
      */
-    private $roles = ['ROLE_USER'];
+    private $roles = ['ROLE_STUDENT'];
 
     public function __construct()
     {

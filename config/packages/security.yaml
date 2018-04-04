@@ -41,4 +41,10 @@ security:
         #Entity ACL
 
         - { path: ^/api/auth, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api, roles: [ROLE_USER] }
+        - { path: ^/api, roles: ROLE_USER }
+
+    role_hierarchy:
+        ROLE_STUDENT: ROLE_USER
+        ROLE_TEACHER: ROLE_USER
+        ROLE_ADMIN: ROLE_USER
+

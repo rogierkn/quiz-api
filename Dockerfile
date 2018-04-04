@@ -36,7 +36,7 @@ RUN chmod +x /usr/local/bin/docker-entrypoint
 
 WORKDIR /srv/api
 ENTRYPOINT ["docker-entrypoint"]
-CMD ["php-fpm", "bin/console thruway:process start"]
+CMD ["php-fpm"]
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER 1
