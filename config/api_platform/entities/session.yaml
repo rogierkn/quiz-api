@@ -6,7 +6,7 @@ App\Entity\Session:
                 enable_max_depth: true
                 groups: ["quiz.sessions.get"]
         post:
-            access_control: "user.hasAccessToQuiz(object.getQuiz())"
+            access_control: "user.hasAccessToQuiz(object.getQuiz()) and has_role('ROLE_TEACHER')"
             denormalization_context:
                 groups: ["session.post"]
         api_quizzes_sessions_get_subresource:

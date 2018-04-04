@@ -3,6 +3,9 @@ App\Entity\User:
         id:
             groups: ["user.get"]
         email:
-            groups: ["user.get"]
+            groups: ["user.get", "users.create"]
         password:
+            groups: ["user.post", "users.create"]
+        roles:
+            groups: ["user.get", "user.put"]
 

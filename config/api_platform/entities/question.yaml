@@ -4,6 +4,8 @@ App\Entity\Question:
             access_control: "has_role('ROLE_ADMIN')"
         post:
             normalization_context:
+                groups: ["question.get"]
+            denormalization_context:
                 groups: ["question.post"]
     itemOperations:
         get: ~

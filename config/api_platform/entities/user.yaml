@@ -2,10 +2,31 @@ App\Entity\User:
     collectionOperations:
         get:
             access_control: 'has_role("ROLE_ADMIN")'
-        register:
-            path: '/auth/register.{_format}'
-            controller: 'App\Controller\Auth\Register'
-            method: 'POST'
+        post:
+            access_control: 'has_role("ROLE_ADMIN")'
+            normalization_context:
+                groups: ["user.get"]
+            denormalization_context:
+                groups: ["users.create"]
+
+    itemOperations:
+        get:
+            access_control: 'has_role("ROLE_ADMIN")'
+        put:
+            access_control: 'has_role("ROLE_ADMIN")'
+            normalization_context:
+                groups: ["user.put"]
+            denormalization_context:
+                groups: ["user.put"]
+        updatePassword:
+            path: '/users/{id}/update-password.{_format}'
+            controller: 'App\Controller\Auth\UpdatePassword'
+            method: 'PUT'
+            normalization_context:
+                groups: ["user.put"]
+            denormalization_context:
+                groups: ["user.put"]
+
 
     properties:
         id: ~
@@ -13,6 +34,7 @@ App\Entity\User:
         password:
             readable: false
             writeable: true
+        roles: ~
         quizzes:
              subresource:
                 resourceClass: 'App\Entity\Quiz'

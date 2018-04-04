@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity("email", message="This email is already in use")
+ * @UniqueEntity("email", message="The email {{ value }} is already in use")
  */
 class User implements UserInterface, Serializable
 {
@@ -39,7 +39,6 @@ class User implements UserInterface, Serializable
 
     /**
      * @ORM\Column(type="string", length=64)
-     * // Todo add min length before encoding it
      */
     private $password;
 
@@ -125,6 +124,11 @@ class User implements UserInterface, Serializable
     public function getRoles(): array
     {
         return $this->roles;
+    }
+
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
     }
 
     public function getPassword(): string

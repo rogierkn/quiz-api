@@ -11,10 +11,11 @@ App\Entity\Quiz:
             normalization_context:
                 enable_max_depth: true
                 groups: ["quizzes.get"]
-        post: ~
+        post:
+            access_control: "has_role('ROLE_TEACHER')"
         api_users_quizzes_get_subresource: # Get the quizzes of a user
             method: 'GET'
-            access_control: "user == object"
+            access_control: "user === object"
             normalization_context:
                 enable_max_depth: true
                 groups: ["quizzes.get"]

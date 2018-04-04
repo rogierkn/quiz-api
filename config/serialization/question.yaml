@@ -1,14 +1,16 @@
 App\Entity\Question:
     attributes:
         id:
-            groups: ["quizzes.get", "quiz.put", "quiz.get", "question.post", "session.get"]
+            groups: ["quizzes.get", "quiz.put", "quiz.get", "question.get", "session.get"]
         text:
-            groups: ["quizzes.get", "quiz.put", "quiz.get", "question.post", "question.put", "session.get"]
+            groups: ["quizzes.get", "quiz.put", "quiz.get", "question.get", "question.put", "session.get"]
         type:
-            groups: ["quizzes.get", "quiz.put", "quiz.get", "question.post", "question.put", "session.get"]
+            groups: ["quizzes.get", "quiz.put", "quiz.get", "question.get", "question.put", "session.get", "question.post"]
         answers:
             max_depth: 1
             groups: ["quiz.put", "quiz.get", "question.post", "session.get"]
         quiz:
             max_depth: 1
-            groups: ["quizzes.get", "quiz.put", "quiz.get", "question.post"]
+            groups: ["quizzes.get", "quiz.put", "quiz.get", "question.get", "question.post"]
+        displayType:
+            groups: ["quizzes.get", "quiz.put", "quiz.get", "question.get", "question.put", "session.get"]

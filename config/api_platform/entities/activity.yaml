@@ -1,6 +1,7 @@
 App\Entity\Activity:
     collectionOperations:
         post:
+            access_control: "has_role('ROLE_STUDENT')"
             normalization_context:
                 groups: ["activity.post"]
             denormalization_context:

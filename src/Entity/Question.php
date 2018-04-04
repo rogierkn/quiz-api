@@ -31,11 +31,10 @@ class Question
      * The text of a question.
      *
      * @var string
-     * @ORM\Column(type="text")
-     * @Assert\NotBlank()
-     * @Assert\Length(max="500")
+     * @ORM\Column(type="string")
+     * @Assert\Length(max="1000")
      */
-    private $text;
+    private $text = '';
 
     /**
      * The type of a question, for example a single answer type question
@@ -72,6 +71,14 @@ class Question
      *
      */
     private $activities;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     * @Assert\Choice({"DISPLAY_BUTTON", "DISPLAY_TILE"})
+     * @Assert\Type("string")
+     */
+    private $displayType = 'DISPLAY_BUTTON';
 
     public function __construct()
     {
@@ -181,9 +188,25 @@ class Question
     /**
      * @param Activity $activity
      */
-    public function removeActivity(Activity $activity)
+    public function removeActivity(Activity $activity): void
     {
         $this->activities->removeElement($activity);
         $activity->setQuestion(null);
+    }
+
+    /**
+     * @return string
+     */
+    public function getDisplayType(): string
+    {
+        return $this->displayType;
+    }
+
+    /**
+     * @param string $displayType
+     */
+    public function setDisplayType(string $displayType): void
+    {
+        $this->displayType = $displayType;
     }
 }

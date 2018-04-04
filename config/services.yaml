@@ -32,6 +32,10 @@ services:
         tags:
             - { name: doctrine.event_listener, event: postPersist, lazy: true}
 
+    App\EventSubscriber\UserPasswordEncoder:
+        tags:
+            - { name: doctrine.event_listener, event: prePersist, lazy: true}
+
 
 
     # add more service definitions when explicit configuration is needed

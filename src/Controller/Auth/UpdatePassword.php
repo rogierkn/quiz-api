@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class Register
+class UpdatePassword
 {
 
     /**
@@ -20,7 +20,6 @@ class Register
 
     public function __construct(UserPasswordEncoderInterface $encoder)
     {
-//        $this->request = $request;
         $this->encoder = $encoder;
     }
 
