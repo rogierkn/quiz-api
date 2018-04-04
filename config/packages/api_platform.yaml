@@ -11,15 +11,8 @@ api_platform:
     collection:
         pagination:
             enabled: false
-    # Enable the Varnish integration
-#    http_cache:
-#        invalidation:
-#            enabled: false
-#            varnish_urls: ['%env(VARNISH_URL)%']
-#        max_age: 0
-#        shared_max_age: 0
-#        vary: ['Content-Type', 'Authorization']
-#        public: true
+            client_enabled: true
+            enabled_parameter_name: paginate
 
     formats:
         jsonld:
