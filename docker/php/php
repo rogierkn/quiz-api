@@ -2,21 +2,26 @@ FROM php:7.2-fpm
 
 # Install PHP extensions
 
-RUN apt-get update && apt-get install -y openssl libmcrypt-dev mysql-client libicu-dev nano libpng-dev git unzip && docker-php-ext-install pdo_mysql intl gd zip
+RUN apt-get update && apt-get install -y openssl libmcrypt-dev mysql-client libicu-dev nano libpng-dev unzip gnupg && docker-php-ext-install pdo_mysql intl gd zip
 
 # Enable PHP error log to docker log
 RUN echo "php_admin_value[error_log] = /dev/stderr" >> /usr/local/etc/php-fpm.conf
 
+COPY . /var/www
 
 
 # Generate JWT
 RUN mkdir -p /var/www/config/jwt/
 RUN openssl genrsa -passout pass:jwtquiz -out /var/www/config/jwt/private.pem -aes256 4096  \
-
- && openssl rsa -passin pass:jwtquiz -pubout -in /var/www/config/jwt/private.pem -out /var/www/config/jwt/public.pem
+&& openssl rsa -passin pass:jwtquiz -pubout -in /var/www/config/jwt/private.pem -out /var/www/config/jwt/public.pem
 
 # install nodejs & npm
-# RUN cd ~ && curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh && bash nodesource_setup.sh && apt-get install -y nodejs build-essential
+RUN cd ~ && curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh && bash nodesource_setup.sh && apt-get install -y nodejs build-essential && \
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
+WORKDIR /var/www/
+RUN apt-get update && apt-get install -y yarn && yarn run prod
 
 
 

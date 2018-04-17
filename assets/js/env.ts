@@ -7,7 +7,7 @@ if(window.location.href.includes("localhost")) {
 
 
 const apiConfig = {
-    url: `http://${window.location.hostname}`,
+    url: `http://${window.location.hostname}:8001`,
     format: '.jsonld'
 };
 

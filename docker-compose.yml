@@ -6,7 +6,7 @@ services:
       context: ./docker/nginx/
       dockerfile: nginx
     ports:
-      - "80:80"
+      - "8001:80"
       - "443:443"
     volumes:
       - .:/var/www:cached
@@ -18,8 +18,8 @@ services:
   php:
     container_name: quiz_php
     build:
-      context: ./docker/php/
-      dockerfile: php
+      context: .
+      dockerfile: ./docker/php/php
     volumes:
       - .:/var/www:cached
     ports:
@@ -33,7 +33,7 @@ services:
     volumes:
       - .:/var/www/:cached
     ports:
-      - "7070:7070"
+      - "8002:7070"
 
   database:
     container_name: quiz_db
