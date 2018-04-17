@@ -1,0 +1,50 @@
+version: '3'
+services:
+  nginx:
+    container_name: quiz_web
+    build:
+      context: ./docker/nginx/
+      dockerfile: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/var/www:cached
+    links:
+        - php
+    depends_on:
+      - php
+
+  php:
+    container_name: quiz_php
+    build:
+      context: ./docker/php/
+      dockerfile: php
+    volumes:
+      - .:/var/www:cached
+    ports:
+      - "9000:9000"
+
+  websocket:
+    container_name: quiz_websocket
+    build:
+      context: ./docker/php/
+      dockerfile: websocket
+    volumes:
+      - .:/var/www/:cached
+    ports:
+      - "7070:7070"
+
+  database:
+    container_name: quiz_db
+    image: mysql:5.7
+    volumes:
+      - ./docker/database:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_DATABASE: "${DB_DATABASE}"
+      MYSQL_USER: "${DB_USERNAME}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+

@@ -1,0 +1,66 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+code {
+  background: #E0E1E2;
+  border: @black dashed 1px;
+}
+
+html, body {
+    background: @blue;
+}
+
+.ui .white {
+    color: @white !important;
+}
+
+
+
+.notifications {
+  position: fixed;
+  bottom: 50px;
+  right: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.answerSelectedAnimation {
+  animation: answerSelected-fwd 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both;
+}
+@keyframes answerSelected-fwd {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+.pulsate {
+  animation: pulsate-fwd 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both;
+}
+@keyframes pulsate-fwd {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background: fade(@primaryColor, 95%);
+  border-radius: 50px;
+}

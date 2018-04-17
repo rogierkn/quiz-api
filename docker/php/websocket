@@ -1,0 +1,14 @@
+FROM php:7.2-fpm
+
+# Install PHP extensions
+
+RUN apt-get update && apt-get install -y openssl libmcrypt-dev mysql-client libicu-dev nano libpng-dev git unzip && docker-php-ext-install pdo_mysql intl gd zip
+
+# Enable PHP error log to docker log
+RUN echo "php_admin_value[error_log] = /dev/stderr" >> /usr/local/etc/php-fpm.conf
+
+
+
+
+WORKDIR /var/www
+CMD bin/console thruway:process start

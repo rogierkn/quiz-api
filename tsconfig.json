@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "outDir": "public/js/",
+    "noImplicitAny": true,
+    "sourceMap": false,
+    "lib": [
+      "dom",
+      "es7"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "static",
+    "var",
+    "vendor",
+    "src",
+    "test",
+  ]
+}

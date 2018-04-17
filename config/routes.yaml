@@ -12,3 +12,11 @@ api_login_check:
 swagger_ui:
     path: /docs
     controller: api_platform.swagger.action.ui
+
+fallback:
+    path: /{fallback}
+    controller: App\Controller\Fallback
+    methods: 'GET'
+    requirements:
+        fallback: '.*'
+

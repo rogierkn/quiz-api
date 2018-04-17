@@ -1,3 +1,7 @@
+node_modules
+npm-debug.log
+.DS_Store
+
 
 ###> symfony/framework-bundle ###
 .env
@@ -22,3 +26,5 @@
 ###> lexik/jwt-authentication-bundle ###
 %CONFIG_DIR%/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
+
+
