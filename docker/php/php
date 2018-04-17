@@ -28,8 +28,10 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.lis
 WORKDIR /var/www
 RUN apt-get update && apt-get install -y yarn
 
+ENV COMPOSER_ALLOW_SUPERUSER 1
+COPY composer.json composer.lock ./
 CMD bash -c "composer install && yarn && yarn run prod"
-
+CMD ["php-fpm"]
 
 
 WORKDIR /var/www
