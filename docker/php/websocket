@@ -11,4 +11,5 @@ RUN echo "php_admin_value[error_log] = /dev/stderr" >> /usr/local/etc/php-fpm.co
 
 
 WORKDIR /var/www
+COPY . ./
 CMD bin/console thruway:process start

@@ -33,7 +33,7 @@ services:
     volumes:
       - .:/var/www/:cached
     ports:
-      - "8002:7070"
+      - "8002:8002"
 
   database:
     container_name: quiz_db

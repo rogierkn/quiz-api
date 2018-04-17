@@ -28,7 +28,7 @@ export default class GroupPlayerSessionService implements PlayerSessionService {
 
     private init() {
         let connection = new Connection({
-            url: 'ws://' + window.location.hostname + ':7070',
+            url: 'ws://' + window.location.hostname + ':8002',
             realm: `session-${this.session.uuid}`
         });
 

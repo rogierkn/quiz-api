@@ -16,9 +16,9 @@ mv composer.phar /usr/local/bin/composer
 
 
 # Generate JWT
-RUN mkdir -p /var/www/config/jwt/
-RUN openssl genrsa -passout pass:jwtquiz -out /var/www/config/jwt/private.pem -aes256 4096  \
-&& openssl rsa -passin pass:jwtquiz -pubout -in /var/www/config/jwt/private.pem -out /var/www/config/jwt/public.pem
+# RUN mkdir -p /var/www/config/jwt/
+# RUN openssl genrsa -passout pass:jwtquiz -out /var/www/config/jwt/private.pem -aes256 4096  \
+# && openssl rsa -passin pass:jwtquiz -pubout -in /var/www/config/jwt/private.pem -out /var/www/config/jwt/public.pem
 
 # install nodejs & npm
 RUN cd ~ && curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh && bash nodesource_setup.sh && apt-get install -y nodejs build-essential && \

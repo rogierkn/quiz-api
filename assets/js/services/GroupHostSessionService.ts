@@ -55,7 +55,7 @@ export default class GroupHostSessionService {
     }
 
     private init() {
-        let connection = new Connection({url: 'ws://' + window.location.hostname+ ':7070', realm: `session-${this.session.uuid}`});
+        let connection = new Connection({url: 'ws://' + window.location.hostname+ ':8002', realm: `session-${this.session.uuid}`});
 
         connection.onopen = (socketSession: SocketSession) => {
             this.socketSession = socketSession;

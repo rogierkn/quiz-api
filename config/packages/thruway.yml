@@ -1,7 +1,7 @@
 voryx_thruway:
     realm: 'quiz'
-    url: 'ws://127.0.0.1:7070' #The url that the clients will use to connect to the router
+    url: 'ws://127.0.0.1:8002' #The url that the clients will use to connect to the router
     router:
         ip: '0.0.0.0'  # the ip that the router should start on
-        port: '7070'  # public facing port.  If authentication is enabled, this port will be protected
-        trusted_port: '8081' # Bypasses all authentication.  Use this for trusted clients.
+        port: '8002'  # public facing port.  If authentication is enabled, this port will be protected
+        trusted_port: '8080' # Bypasses all authentication.  Use this for trusted clients.
