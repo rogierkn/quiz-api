@@ -31,7 +31,7 @@ services:
       context: ./docker/php/
       dockerfile: websocket
     volumes:
-      - .:/var/www/:cached
+      - .:/var/www:cached
     ports:
       - "8002:8002"
 
