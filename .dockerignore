@@ -7,7 +7,6 @@
 **/*.md
 **/.dockerignore
 Dockerfile*
-.env*
 !var/.gitignore
 var/*
 helm/*

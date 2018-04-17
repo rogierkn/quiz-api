@@ -9,6 +9,11 @@ RUN echo "php_admin_value[error_log] = /dev/stderr" >> /usr/local/etc/php-fpm.co
 
 COPY . /var/www
 
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+php composer-setup.php && \
+php -r "unlink('composer-setup.php');" && \
+mv composer.phar /usr/local/bin/composer
+
 
 # Generate JWT
 RUN mkdir -p /var/www/config/jwt/
@@ -20,7 +25,8 @@ RUN cd ~ && curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-WORKDIR /var/www/
+WORKDIR /var/www
+RUN composer install
 RUN apt-get update && apt-get install -y yarn && yarn run prod
 
 
