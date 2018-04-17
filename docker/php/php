@@ -27,7 +27,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.lis
 
 WORKDIR /var/www
 RUN composer install
-RUN apt-get update && apt-get install -y yarn && yarn run prod
+RUN apt-get update && apt-get install -y yarn && yarn && yarn run prod
 
 
 
