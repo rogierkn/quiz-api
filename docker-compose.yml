@@ -1,6 +1,7 @@
 version: '3'
 services:
   nginx:
+    restart: always
     container_name: quiz_web
     build:
       context: ./docker/nginx/
@@ -16,6 +17,7 @@ services:
       - php
 
   php:
+    restart: always
     container_name: quiz_php
     build:
       context: .
@@ -26,6 +28,7 @@ services:
       - "9000:9000"
 
   websocket:
+    restart: always
     container_name: quiz_websocket
     build:
       context: ./docker/php/
@@ -36,6 +39,7 @@ services:
       - "8002:8002"
 
   database:
+    restart: always
     container_name: quiz_db
     image: mysql:5.7
     volumes:
